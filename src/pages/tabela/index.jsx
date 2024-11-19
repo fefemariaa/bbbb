@@ -15,8 +15,8 @@ export default function Tabela() {
         let resp = await axios.get(url);
         setTabela(resp.data);
     }
-    async function excluir() {
-        const url = 'http://localhost:3000/chamada';
+    async function excluir(index) {
+        const url = `http://localhost:3000/chamada/${index}`;
         let resp = await axios.delete(url);
         console.log(resp);
     }
@@ -43,13 +43,13 @@ export default function Tabela() {
                 </thead>
 
                 <tbody>
-                    {tabela.map(item => 
-                        <tr>
+                    {tabela.map((item, index) =>
+                        <tr key={index}>
                             <td>{item.titulo}</td>
                             <td>{item.impacto}</td>
                             <td>{new Date(item.dataOcorrencia).toLocaleDateString()}</td>
                             <td>{item.atribuido ? 'Sim' : 'Não'}</td>
-                            <td><button onClick={excluir}>excluir</button></td>
+                            <td><button onClick={() => excluir(index)}>excluir</button></td>
                         </tr>
                     )}
                 </tbody>
