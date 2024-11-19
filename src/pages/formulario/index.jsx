@@ -2,21 +2,32 @@ import { useState } from 'react'
 import './index.scss'
 import Cabecalho from '../../components/cabecalho';
 import axios from 'axios'
-import { Link } from 'react-router-dom';
 
 export default async function Formulario() {
-    const [dados, setDados] = useState({
-        titulo: '',
-        impacto: '',
-        dataOcorrencia: '',
-        atribuido: ''
-    });
+    const[titulo, setTitulo] = useState('');
+    const[informacoes, setInformacoes] = useState('');
+    const[impacto, setImpacto] = useState('');
+    const[dataOcorrencia, setDataOcorrencia] = useState('');
+    const[atribuido, setAtribuido] = useState('');
     
     async function enviar() {
-        const url = 'http://localhost:5010/chamada';
-        let resp = await axios.post(url, dados);
-        console.log(resp);
+        const url = `http://localhost:3000/chamada`;
+        try {
+            let dados = {
+                titulo  : titulo,
+                informacoes: informacoes,
+                impacto: impacto,
+                dataOcorrencia: dataOcorrencia,
+                atribuido: atribuido,
+                
+            };
+            await axios.post(url, dados);
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
+
 
     return (
         <div className='pagina-consultar'>
@@ -24,13 +35,15 @@ export default async function Formulario() {
             <h1> CONSULTAR </h1>
             <form>
                 <label>Título</label>
-                <input type='text' value={dados.titulo} onChange={e => setDados({...dados, titulo: e.target.value})}/>
+                <input type='text' value={titulo} onChange={e => setTitulo(e.target.value)}/>
+                <label>Informações</label>
+                <input type='text' value={informacoes} onChange={e => setInformacoes(e.target.value)}/>
                 <label>Impacto</label>
-                <input type='text' value={dados.impacto} onChange={e => setDados({...dados, impacto: e.target.value})}/>
+                <input type='text' value={impacto} onChange={e => setImpacto(e.target.value)}/>
                 <label>Data ocorrência</label>
-                <input type='date' value={dados.dataOcorrencia} onChange={e => setDados({...dados, dataOcorrencia: e.target.value})}/>
+                <input type='date' value={dataOcorrencia} onChange={e => setDataOcorrencia(e.target.value)}/>
                 <label>Atribuído</label>
-                <input type='text' value={dados.atribuido} onChange={e => setDados({...dados, atribuido: e.target.value})}/>
+                <input type='text' value={atribuido} onChange={e => setAtribuido(e.target.value)}/>
             </form>
             <button onClick={enviar}>Enviar</button>
         </div>

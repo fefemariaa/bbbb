@@ -36,6 +36,8 @@ export default function Tabela() {
                 <thead>
                     <tr>
                         <th>Título</th>
+
+                        <th>Informações</th>
                         <th>Impacto</th>
                         <th>Data ocorrência</th>
                         <th>Atribuído</th>
@@ -46,6 +48,7 @@ export default function Tabela() {
                     {tabela.map((item, index) =>
                         <tr key={index}>
                             <td>{item.titulo}</td>
+                            <td>{item.informacoes}</td>
                             <td>{item.impacto}</td>
                             <td>{new Date(item.dataOcorrencia).toLocaleDateString()}</td>
                             <td>{item.atribuido ? 'Sim' : 'Não'}</td>
@@ -55,6 +58,7 @@ export default function Tabela() {
                 </tbody>
 
             </table>
+            <button><a href="/formulario">Nova chamada</a></button>
 
            
         </div>
