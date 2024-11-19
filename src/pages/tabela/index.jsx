@@ -11,9 +11,14 @@ export default function Tabela() {
 
 
     async function buscar() {
-        const url = 'http://localhost:5010/chamada';
+        const url = 'http://localhost:3000/chamada';
         let resp = await axios.get(url);
         setTabela(resp.data);
+    }
+    async function excluir() {
+        const url = 'http://localhost:3000/chamada';
+        let resp = await axios.delete(url);
+        console.log(resp);
     }
 
     
@@ -44,6 +49,7 @@ export default function Tabela() {
                             <td>{item.impacto}</td>
                             <td>{new Date(item.dataOcorrencia).toLocaleDateString()}</td>
                             <td>{item.atribuido ? 'Sim' : 'Não'}</td>
+                            <td><button onClick={excluir}>excluir</button></td>
                         </tr>
                     )}
                 </tbody>
