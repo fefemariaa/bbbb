@@ -18,7 +18,8 @@ export default function Tabela() {
     async function excluir(index) {
         const url = `http://localhost:3000/chamada/${index}`;
         let resp = await axios.delete(url);
-        console.log(resp);
+        setTabela(resp.data);
+
     }
 
     
