@@ -20,6 +20,7 @@ export default function Tabela() {
 
     return (
         <div className='pagina-consultar'>
+            <a href="/formulario">Formulario</a>
             <h1> CONSULTAR </h1>
 
             <button onClick={buscar}>Buscar</button>
