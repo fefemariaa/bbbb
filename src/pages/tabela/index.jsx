@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.scss'
-
+import Cabecalho from '../../components/cabecalho';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
@@ -20,6 +20,7 @@ export default function Tabela() {
 
     return (
         <div className='pagina-consultar'>
+            <Cabecalho />
             <a href="/formulario">Formulario</a>
             <h1> CONSULTAR </h1>
 

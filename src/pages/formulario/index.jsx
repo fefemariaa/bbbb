@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.scss'
-
+import Cabecalho from '../../components/cabecalho';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
@@ -20,6 +20,7 @@ export default async function Formulario() {
 
     return (
         <div className='pagina-consultar'>
+            <Cabecalho />
             <h1> CONSULTAR </h1>
             <form>
                 <label>Título</label>

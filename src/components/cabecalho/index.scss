@@ -1,0 +1,14 @@
+.cabecalho {
+    background-color: rgb(43, 24, 24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    color: rgb(253, 181, 181);
+    font-weight: bold;
+
+    h1{
+        font-size: 2vw;
+    }
+}
