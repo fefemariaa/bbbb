@@ -32,6 +32,7 @@ export default function Formulario() {
     return (
         <div className='pagina-consultar'>
             <Cabecalho />
+            <a href="/tabela">Tabela</a>
             <h1> CONSULTAR </h1>
             <form onSubmit={(e) => { e.preventDefault(); enviar(); }}>
                 <label>Título</label>
